@@ -1,0 +1,140 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+ v2.0 | 20110126
+ License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+/* ---------------------*/
+
+html, body {
+}
+body {
+  background: radial-gradient(#168FDE, #1060A9);
+  color: #ffffff;
+}
+p {
+  font-family: 'Roboto', sans-serif;
+}
+h1, h2, h3, h4, h5, h6, span {
+  font-family: 'Exo', sans-serif;
+}
+hr {
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+.app {
+  background: radial-gradient(#168FDE, #1060A9);
+  border-radius: 4px;
+  box-shadow: 0 0 100px 0px rgba(0,0,0,0.25);
+  margin: 0 auto;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  max-width: 768px;
+  padding: 3%;
+  width: 90%;
+}
+.header {
+  text-align: left;
+  width: 100%;
+}
+.header__cta {
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.header__slogan {
+  border-top: 1px solid rgba(255,255,255,0.25);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+.in-values,
+.out-values {
+  width: 100%;
+}
+
+.values {
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding: 20px;
+  width: 100%;
+}
+
+.inputs {
+  background: #ffffff;
+  color: #999999;
+}
+
+.outputs {
+  background: rgba(255,255,255,0.25);
+  color: #ffffff;
+}
+
+.info {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 31px 0;
+  text-align: center;
+}
+.author {
+  font-size: 12px;
+  font-weight: 700;
+}
+.detail,
+.detail:link,
+.detail:hover,
+.detail:focus,
+.detail:visited {
+  color: #ffffff;
+  font-weight: 300;
+  margin-bottom: 10px;
+}

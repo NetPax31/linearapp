@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Linear App</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Exo:100,300,400,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root">
+  </div>
+
+  <script src="js/react.production.min.js"></script>
+  <script src="js/react-dom.production.min.js"></script>
+  <script src="js/babel.min.js"></script>
+
+  <script type="text/babel">
+
+  class App extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        ratio: 7.5,
+        inputRpm: 1400,
+        shaftRadius: 0.1
+      };
+    }
+
+    componentDidMount() {
+      this.calculateSpeed();
+    }
+
+    calculateSpeed() {
+      var speedMMResult = 6.28 * this.state.shaftRadius * (this.state.inputRpm / this.state.ratio);
+      var speedMSResult = speedMMResult / 60;
+      var outputRotation = this.state.inputRpm / this.state.ratio;
+      this.setState({
+        linearSpeedMM: speedMMResult.toFixed(2),
+        linearSpeedMS: speedMSResult.toFixed(2),
+        outputRpm: outputRotation.toFixed(2)
+      });
+    }
+
+    changeRatio(event) {
+      this.setState({
+        ratio: event.target.value
+      }, () => {
+        this.calculateSpeed();
+      });
+    }
+
+    changeInputRpm(event) {
+      this.setState({
+        inputRpm: event.target.value
+      }, () => {
+        this.calculateSpeed();
+      });
+    }
+
+    changeRadius(event) {
+      this.setState({
+        shaftRadius: event.target.value
+      }, () => {
+        this.calculateSpeed();
+      });
+    }
+
+    render() {
+      const gearRatioValues = [7.5, 10, 15, 20, 25, 30, 40, 50, 60, 80, 100];
+      const inputRpmValues  = [900, 1400, 2800];
+      return (
+        <div className="app">
+          <div className="header">
+            <h2 className="header__cta">linear app <i className="fa fa-gears"></i></h2>
+            <h3 className="header__slogan">fast calculate - fast choice</h3>
+            <p className="detail">Simple calculator app allows you to convert angular velocity into linear for conveyor belts, etc.</p>
+          </div>
+          <hr />
+          <div className="in-values">
+            <p className="detail">Gearbox ratio [i]</p>
+            <select className="values inputs" value={this.state.ratio} onChange={this.changeRatio.bind(this)}>
+              {
+                gearRatioValues.map(ratio => {
+                  return (
+                    <option value={ratio}>{ratio}</option>
+                  );
+                })
+              }
+            </select>
+            <p className="detail">Motor [rpm]</p>
+            <select className="values inputs" value={this.state.inputRpm} onChange={this.changeInputRpm.bind(this)}>
+              {
+                inputRpmValues.map(rpm => {
+                  return (
+                    <option value={rpm}>{rpm}</option>
+                  );
+                })
+              }
+            </select>
+            <p className="detail">Shaft radius [m] - {this.state.shaftRadius}</p>
+            <input type="range" min="0.01" max="0.9" step="0.01" value={this.state.shaftRadius} className="values inputs" onChange={this.changeRadius.bind(this)} />
+          </div>
+          <hr />
+          <div className="out-values">
+            <p className="detail">Linear speed [m/minute]</p>
+            <p className="values outputs">{this.state.linearSpeedMM}</p>
+            <p className="detail">Linear speed [m/second]</p>
+            <p className="values outputs">{this.state.linearSpeedMS}</p>
+            <p className="detail">Output rotation [rpm]</p>
+            <p className="values outputs">{this.state.outputRpm}</p>
+          </div>
+          <hr />
+          <p className="author detail">© Front-end developer <a href="http://inforeklama.com.pl/cv/" className="detail" title="Wojciech Stawarz - Front-end developer" target="_blank"><i className="fa fa-link"></i></a> <a href="https://www.linkedin.com/in/wojciech-stawarz/" className="detail" title="Wojciech Stawarz - linkedIn" target="_blank"><i className="fa fa-linkedin-square"></i></a></p>
+        </div>
+      );
+    }
+  }
+
+  ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
